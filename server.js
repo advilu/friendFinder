@@ -1,0 +1,24 @@
+const express = require("express");
+const path = require("path");
+
+
+const app = express();
+PORT = 3013;
+
+const routes = require("./routes");
+app.use(express.urlencoded({extended: true}))
+
+// extending routes from server.js
+require("./app/routes/apiRoutes.js")(app);
+require("./app/routes/htmlRoutes.js")(app);
+
+//????????????????????????????????????????????????????????????????????????
+//is the above two the same as:
+// const htmlRoutes = require('./app/routing/htmlRoutes')
+// const apiRoutes = require("./app/routing/apiRoutes")
+// app.use("/api", apiRoutes)
+// app.use(htmlRoutes)
+
+app.listen(PORT, function() {
+    console.log("Server listening on: http://localhost:" + PORT);
+  });
